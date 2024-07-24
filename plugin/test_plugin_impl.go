@@ -1,6 +1,3 @@
-// Copyright (c) HashiCorp, Inc.
-// SPDX-License-Identifier: MPL-2.0
-
 package main
 
 import (
@@ -8,7 +5,7 @@ import (
 
 	"github.com/hashicorp/go-hclog"
 	"github.com/hashicorp/go-plugin"
-	"github.com/hashicorp/go-plugin/examples/basic/shared"
+	"go_plugins/shared"
 )
 
 // Here is a real implementation of Greeter
@@ -16,9 +13,9 @@ type GreeterHello struct {
 	logger hclog.Logger
 }
 
-func (g *GreeterHello) Greet() string {
+func (g *GreeterHello) Greet() (string, error) {
 	g.logger.Debug("message from GreeterHello.Greet")
-	return "Hello!"
+	return "Hello!", nil
 }
 
 // handshakeConfigs are used to just do a basic handshake between
